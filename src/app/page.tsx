@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Flavors } from "@/components/Flavors";
 import { Marquee } from "@/components/Marquee";
+import { ReviewsMarquee } from "@/components/ReviewsMarquee";
 import { Pros } from "@/components/Pros";
 import { ContactForm } from "@/components/ContactForm";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Flavors />
         <Marquee />
+        <ReviewsMarquee />
         <Pros />
         <ContactForm />
         <FinalCTA />
