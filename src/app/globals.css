@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Montserrat", system-ui, sans-serif;
+    --font-sans: "Inter", system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-rose/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Lenis smooth scroll */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-paper text-ink/80 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-rose/20 text-rose-deep;
+  }
+
+  /* Pink custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fff0f6;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f73e8b, #ec1c6b);
+    border-radius: 999px;
+    border: 2px solid #fff0f6;
+  }
+}
+
+@layer components {
+  /* Pink gradient text */
+  .text-rose-grad {
+    @apply bg-rose-text bg-clip-text text-transparent;
+  }
+  .text-gold {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  /* Light frosted glass surface */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border: 1px solid rgba(236, 28, 107, 0.1);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(22px) saturate(130%);
+    -webkit-backdrop-filter: blur(22px) saturate(130%);
+    border: 1px solid rgba(236, 28, 107, 0.14);
+  }
+
+  /* Solid white card */
+  .card {
+    @apply rounded-3xl border border-rose/10 bg-white shadow-card;
+  }
+
+  /* Hairline divider */
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-rose/25 to-transparent;
+  }
+  .hairline-gold {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-or/60 to-transparent;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-luxe text-rose;
+  }
+
+  /* Section container */
+  .container-luxe {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(110deg, #ec1c6b 25%, #f73e8b 50%, #ec1c6b 75%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    @apply animate-shimmer;
+  }
+
+  .perspective {
+    perspective: 1400px;
+  }
+
+  /* The signature "dot" — colorful mini-billes circle (logo O) */
+  .dot-orb {
+    background:
+      radial-gradient(circle at 30% 30%, #f06ca0 0 3px, transparent 3px),
+      radial-gradient(circle at 60% 25%, #a8c24a 0 3px, transparent 3px),
+      radial-gradient(circle at 75% 55%, #f4c94e 0 3px, transparent 3px),
+      radial-gradient(circle at 40% 60%, #ec9a4c 0 3px, transparent 3px),
+      radial-gradient(circle at 55% 75%, #f06ca0 0 3px, transparent 3px),
+      radial-gradient(circle at 25% 70%, #f3e7c6 0 3px, transparent 3px),
+      radial-gradient(circle at 70% 80%, #a8c24a 0 3px, transparent 3px),
+      #2b2228;
+  }
+}
+
+/* Respect reduced-motion for accessibility + CWV */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
