@@ -17,7 +17,7 @@ const SOCIALS = [
 const LINKS = {
   "Nos saveurs": FLAVORS.map((f) => ({ label: f.name, href: "/#saveurs" })),
   "Le concept": [
-    { label: "Crack. Scoop. Enjoy.", href: "/#concept" },
+    { label: "Crack. Scoop. Enjoy.", href: "/#hero" },
     { label: "Le phénomène TikTok", href: "/#pros" },
   ],
   Professionnels: [

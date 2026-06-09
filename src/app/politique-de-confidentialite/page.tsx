@@ -23,7 +23,7 @@ export default function ConfidentialitePage() {
       <h2>Responsable du traitement</h2>
       <p>
         Le responsable du traitement est GMD Group, 24 rue du Faubourg, 75008 Paris —{" "}
-        <a href="mailto:contact@gmd-group.com">contact@gmd-group.com</a>.
+        <a href="mailto:gmdgroup@outlook.fr">gmdgroup@outlook.fr</a>.
       </p>
 
       <h2>Données collectées</h2>
@@ -56,7 +56,7 @@ export default function ConfidentialitePage() {
       <p>
         Vous disposez d&apos;un droit d&apos;accès, de rectification, d&apos;effacement, de limitation,
         d&apos;opposition et de portabilité. Pour les exercer, écrivez à{" "}
-        <a href="mailto:contact@gmd-group.com">contact@gmd-group.com</a>. Vous pouvez également
+        <a href="mailto:gmdgroup@outlook.fr">gmdgroup@outlook.fr</a>. Vous pouvez également
         introduire une réclamation auprès de la CNIL.
       </p>
 

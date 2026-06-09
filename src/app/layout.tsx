@@ -16,7 +16,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://www.dotcake.com";
+const SITE_URL = "https://www.dotcake.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -91,8 +91,8 @@ const jsonLd = {
   parentOrganization: {
     "@type": "Organization",
     name: "GMD Group",
-    email: "contact@gmd-group.com",
-    telephone: "+33-1-23-45-67-89",
+    email: "gmdgroup@outlook.fr",
+    telephone: "+33-6-62-13-75-52",
   },
   makesOffer: [
     "Dubai Pistachio",

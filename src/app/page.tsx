@@ -4,7 +4,6 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Flavors } from "@/components/Flavors";
 import { Marquee } from "@/components/Marquee";
-import { Concept } from "@/components/Concept";
 import { Pros } from "@/components/Pros";
 import { ContactForm } from "@/components/ContactForm";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -20,7 +19,6 @@ export default function Home() {
         <Hero />
         <Flavors />
         <Marquee />
-        <Concept />
         <Pros />
         <ContactForm />
         <FinalCTA />

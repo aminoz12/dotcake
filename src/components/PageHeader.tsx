@@ -17,6 +17,12 @@ export function PageHeader() {
             ← Accueil
           </Link>
           <Link
+            href="/blog"
+            className="hidden text-sm font-semibold text-ink/70 transition-colors hover:text-rose sm:block"
+          >
+            Blog
+          </Link>
+          <Link
             href="/#contact"
             className="rounded-full bg-rose-gradient px-5 py-2.5 text-xs font-semibold text-white shadow-glow transition-shadow hover:shadow-glow-lg"
           >

@@ -38,7 +38,7 @@ export default function CookiesPage() {
       <h2>Contact</h2>
       <p>
         Pour toute question relative aux cookies, écrivez à{" "}
-        <a href="mailto:contact@gmd-group.com">contact@gmd-group.com</a>. Voir aussi notre{" "}
+        <a href="mailto:gmdgroup@outlook.fr">gmdgroup@outlook.fr</a>. Voir aussi notre{" "}
         <a href="/politique-de-confidentialite">politique de confidentialité</a>.
       </p>
     </LegalLayout>

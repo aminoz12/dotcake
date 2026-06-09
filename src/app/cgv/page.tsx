@@ -59,7 +59,7 @@ export default function CgvPage() {
       </p>
 
       <p>
-        Pour toute question : <a href="mailto:contact@gmd-group.com">contact@gmd-group.com</a>.
+        Pour toute question : <a href="mailto:gmdgroup@outlook.fr">gmdgroup@outlook.fr</a>.
       </p>
     </LegalLayout>
   );
