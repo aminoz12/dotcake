@@ -21,9 +21,9 @@ const SIZES = {
 };
 
 const IMG_SIZES = {
-  sm: "h-9",
+  sm: "h-8", // footer / sous-pages — compact
   md: "h-12",
-  lg: "h-16",
+  lg: "h-14 sm:h-16", // navbar — bien visible
   xl: "h-24",
 };
 

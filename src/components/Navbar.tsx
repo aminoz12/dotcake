@@ -54,7 +54,7 @@ export function Navbar() {
           }`}
         >
           <a href="#hero" className="flex items-center" aria-label="DOT CAKE — accueil">
-            <Logo size="md" img />
+            <Logo size="lg" img />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
