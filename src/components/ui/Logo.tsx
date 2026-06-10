@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BRAND } from "@/lib/data";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
   withParent?: boolean;
   /** light text variant for dark backgrounds */
   light?: boolean;
+  /** render the /logo.png image instead of the text wordmark */
+  img?: boolean;
 };
 
 const SIZES = {
@@ -15,6 +18,13 @@ const SIZES = {
   md: "text-2xl",
   lg: "text-4xl sm:text-5xl",
   xl: "text-5xl sm:text-6xl lg:text-7xl",
+};
+
+const IMG_SIZES = {
+  sm: "h-9",
+  md: "h-12",
+  lg: "h-16",
+  xl: "h-24",
 };
 
 const ORB = {
@@ -33,7 +43,21 @@ export function Logo({
   size = "md",
   withParent = false,
   light = false,
+  img = false,
 }: Props) {
+  if (img) {
+    return (
+      <Image
+        src="/logo.png"
+        alt={`${BRAND.name} ${BRAND.parent}`}
+        width={602}
+        height={415}
+        priority
+        className={`${IMG_SIZES[size]} w-auto ${className}`}
+      />
+    );
+  }
+
   return (
     <span className={`inline-flex flex-col items-center leading-none ${className}`}>
       <span

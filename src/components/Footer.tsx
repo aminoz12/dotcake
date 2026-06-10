@@ -33,7 +33,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand block */}
           <div className="col-span-2 flex flex-col gap-5">
-            <Logo size="md" withParent />
+            <Logo size="lg" img />
             <p className="max-w-xs text-sm leading-relaxed text-ink-soft">
               Le dessert viral qui fait craquer TikTok. Une gamme premium, photogénique
               et ultra partageable, pensée pour les professionnels.
