@@ -18,19 +18,10 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Lenis smooth scroll */
-  html.lenis,
-  html.lenis body {
-    height: auto;
-  }
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-  .lenis.lenis-stopped {
-    overflow: hidden;
+  /* Offset native anchor scrolling so sections clear the fixed navbar */
+  section[id],
+  [id="hero"] {
+    scroll-margin-top: 6rem;
   }
 
   body {

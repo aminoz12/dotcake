@@ -46,8 +46,10 @@ export function ReviewsMarquee() {
                     src={src}
                     alt={`Avis TikTok DOT CAKE n°${i + 1}`}
                     fill
+                    quality={55}
                     sizes="(max-width: 640px) 176px, 208px"
                     className="object-cover"
+                    loading="lazy"
                   />
                   {/* TikTok native feel */}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
