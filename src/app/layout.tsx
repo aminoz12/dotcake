@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   publisher: "GMD Group",
   category: "Food & Beverage Distribution",
   alternates: { canonical: SITE_URL },
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png" }],
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",

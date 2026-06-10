@@ -5,7 +5,7 @@ import { Logo } from "./ui/Logo";
 export function PageHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 py-4">
-      <nav className="container-luxe flex items-center justify-between rounded-full glass-strong px-5 py-2.5 shadow-card">
+      <nav className="container-luxe flex items-center justify-between rounded-full border border-rose/10 bg-white/95 px-5 py-2.5 shadow-card lg:bg-white/70 lg:backdrop-blur-xl lg:saturate-150">
         <Link href="/" aria-label="DOT CAKE — accueil">
           <Logo size="sm" img />
         </Link>

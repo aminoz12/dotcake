@@ -18,8 +18,22 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    let ticking = false;
+    const update = () => {
+      // setState only on threshold change → no re-render churn while scrolling
+      setScrolled((prev) => {
+        const next = window.scrollY > 24;
+        return prev === next ? prev : next;
+      });
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,14 +45,16 @@ export function Navbar() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      <div className={`transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
+      <div className={`transition-[padding] duration-300 ${scrolled ? "py-3" : "py-5"}`}>
         <nav
-          className={`container-luxe flex items-center justify-between rounded-full transition-all duration-500 ${
-            scrolled ? "glass-strong px-5 py-2.5 shadow-card" : "bg-transparent px-2 py-1"
+          className={`container-luxe flex items-center justify-between rounded-full transition-[background-color,box-shadow,padding] duration-300 ${
+            scrolled
+              ? "border border-rose/10 bg-white/95 px-5 py-2.5 shadow-card lg:bg-white/70 lg:backdrop-blur-xl lg:saturate-150"
+              : "border border-transparent bg-transparent px-2 py-1"
           }`}
         >
           <a href="#hero" className="flex items-center" aria-label="DOT CAKE — accueil">
-            <Logo size="sm" img />
+            <Logo size="md" img />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -85,7 +101,7 @@ export function Navbar() {
             transition={{ duration: 0.35, ease: "easeInOut" }}
             className="container-luxe overflow-hidden lg:hidden"
           >
-            <div className="glass-strong mt-2 flex flex-col gap-1 rounded-3xl p-4 shadow-card">
+            <div className="mt-2 flex flex-col gap-1 rounded-3xl border border-rose/10 bg-white p-4 shadow-card">
               {LINKS.map((link) => (
                 <a
                   key={link.href}
