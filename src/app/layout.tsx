@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter } from "next/font/google";
+import Script from "next/script";
+import { SITE_URL, GA_ID } from "@/lib/site";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -15,8 +17,6 @@ const inter = Inter({
   variable: "--font-sans",
   display: "swap",
 });
-
-const SITE_URL = "https://www.dotcakre.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -75,6 +75,12 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
+  // GEO — ciblage géographique France
+  other: {
+    "geo.region": "FR",
+    "geo.placename": "Paris",
+    language: "fr",
+  },
 };
 
 export const viewport: Viewport = {
@@ -84,30 +90,68 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+/** JSON-LD enrichi : Organization + Brand + WebSite (SEO / GEO / AEO). */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Brand",
-  name: "DOT CAKE",
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  slogan: "Crack. Scoop. Enjoy.",
-  description:
-    "Dessert viral à couche croustillante de mini billes et cœur ultra moelleux, distribué par GMD Group auprès des professionnels.",
-  parentOrganization: {
-    "@type": "Organization",
-    name: "GMD Group",
-    email: "gmdgroup@outlook.fr",
-    telephone: "+33-6-62-13-75-52",
-  },
-  makesOffer: [
-    "Dubai Pistachio",
-    "Choco Bueno",
-    "Strawberry Cloud",
-    "Cookies & Cream",
-  ].map((f) => ({
-    "@type": "Offer",
-    itemOffered: { "@type": "Product", name: `DOT CAKE — ${f}` },
-  })),
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "GMD Group",
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+      email: "gmdgroup@outlook.fr",
+      telephone: "+33-6-62-13-75-52",
+      address: { "@type": "PostalAddress", addressCountry: "FR", addressLocality: "Paris" },
+      areaServed: { "@type": "Country", name: "France" },
+      sameAs: [
+        "https://tiktok.com/@dotcake_officiel",
+        "https://instagram.com/dotcake_officiel",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: "gmdgroup@outlook.fr",
+        telephone: "+33-6-62-13-75-52",
+        areaServed: "FR",
+        availableLanguage: ["French"],
+      },
+    },
+    {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand`,
+      name: "DOT CAKE",
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      slogan: "Crack. Scoop. Enjoy.",
+      description:
+        "Dessert viral à couche croustillante de mini billes et cœur ultra moelleux, distribué par GMD Group auprès des professionnels en France.",
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "DOT CAKE by GMD GROUP",
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    ...["Dubai Pistachio", "Choco Bueno", "Strawberry Cloud", "Cookies & Cream"].map(
+      (f) => ({
+        "@type": "Product",
+        name: `DOT CAKE — ${f}`,
+        brand: { "@id": `${SITE_URL}/#brand` },
+        category: "Dessert individuel premium",
+        audience: { "@type": "BusinessAudience", name: "Revendeurs et distributeurs alimentaires" },
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          areaServed: "FR",
+          businessFunction: "https://schema.org/Sell",
+        },
+      })
+    ),
+  ],
 };
 
 export default function RootLayout({
@@ -121,6 +165,20 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

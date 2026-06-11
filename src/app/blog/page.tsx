@@ -3,12 +3,13 @@ import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Footer } from "@/components/Footer";
 import { ARTICLES } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog — Tendances dessert viral & conseils revendeurs",
   description:
     "Le blog DOT CAKE : tendances du dessert viral TikTok, snacking premium, conseils pour revendeurs et stratégies retail. Articles experts pour les professionnels.",
-  alternates: { canonical: "https://www.dotcakre.fr/blog" },
+  alternates: { canonical: `${SITE_URL}/blog` },
 };
 
 const featured = ARTICLES[0];

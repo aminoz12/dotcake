@@ -5,8 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Footer } from "@/components/Footer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/blog";
-
-const SITE_URL = "https://www.dotcakre.fr";
+import { SITE_URL } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -58,19 +57,37 @@ export default async function ArticlePage({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.description,
-    datePublished: article.date,
-    dateModified: article.date,
-    author: { "@type": "Organization", name: "GMD Group" },
-    publisher: {
-      "@type": "Organization",
-      name: "DOT CAKE by GMD GROUP",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${article.slug}` },
-    keywords: article.keywords.join(", "),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: article.title,
+        description: article.description,
+        datePublished: article.date,
+        dateModified: article.date,
+        inLanguage: "fr-FR",
+        author: { "@type": "Organization", name: "GMD Group" },
+        publisher: {
+          "@type": "Organization",
+          name: "DOT CAKE by GMD GROUP",
+          logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${article.slug}` },
+        keywords: article.keywords.join(", "),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: `${SITE_URL}/blog/${article.slug}`,
+          },
+        ],
+      },
+    ],
   };
 
   return (

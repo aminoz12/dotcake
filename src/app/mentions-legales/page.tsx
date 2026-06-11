@@ -12,7 +12,7 @@ export default function MentionsLegalesPage() {
     <LegalLayout eyebrow="Informations légales" title="Mentions légales" updated="9 juin 2026">
       <h2>Éditeur du site</h2>
       <p>
-        Le présent site <strong>www.dotcakre.fr</strong> est édité par <strong>GMD Group</strong>,
+        Le présent site <strong>www.dotcake.fr</strong> est édité par <strong>GMD Group</strong>,
         société exploitant la marque <strong>DOT CAKE™</strong>.
       </p>
       <ul>
