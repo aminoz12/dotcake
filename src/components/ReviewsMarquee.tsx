@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { Icon } from "./ui/Icon";
 
-// /1.png … /10.png à déposer à la racine de public/
-const REVIEWS = Array.from({ length: 10 }, (_, i) => `/${i + 1}.png`);
+// Visuels d'avis optimisés (720px WebP) dans public/reviews/
+const REVIEWS = Array.from({ length: 10 }, (_, i) => `/reviews/${i + 1}.webp`);
 
 /**
  * Bande d'avis TikTok défilant en boucle continue de droite à gauche.

@@ -14,6 +14,16 @@ const nextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
+      {
+        // Static images: long CDN/browser cache (1 week, revalidate in background)
+        source: "/:all*(png|webp|jpg|jpeg|svg|ico)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
+        ],
+      },
     ];
   },
 };

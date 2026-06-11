@@ -121,41 +121,6 @@ export const HERO_BADGES = {
   },
 };
 
-/* --------------------------------------------------------------- Concept */
-
-export type ConceptStep = {
-  number: string;
-  word: string;
-  description: string;
-  accent: string;
-  image: string;
-};
-
-export const CONCEPT_STEPS: ConceptStep[] = [
-  {
-    number: "01",
-    word: "Crack",
-    description: "Casse la fine couche croustillante de mini billes colorées.",
-    accent: "#1d1117",
-    image: "/crack1.png",
-  },
-  {
-    number: "02",
-    word: "Scoop",
-    description: "Plonge ta cuillère dans le cœur ultra moelleux.",
-    accent: "#7e9b2e",
-    image: "/scoop1.png",
-  },
-  {
-    number: "03",
-    word: "Enjoy",
-    description:
-      "Savoure l'alliance parfaite entre croustillant et fondant.",
-    accent: "#ec1c6b",
-    image: "/enjoy1.png",
-  },
-];
-
 /* ----------------------------------------------------------- Pros section */
 
 export const WHY_REFERENCE: Feature[] = [
