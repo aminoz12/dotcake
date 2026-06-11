@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.dotcake.fr/sitemap.xml",
-    host: "https://www.dotcake.fr",
+    sitemap: "https://www.dotcakre.fr/sitemap.xml",
+    host: "https://www.dotcakre.fr",
   };
 }

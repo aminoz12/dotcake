@@ -12,7 +12,7 @@ export const BRAND = {
   email: "gmdgroup@outlook.fr",
   phone: "+33 6 62 13 75 52",
   phoneHref: "+33662137552",
-  site: "www.DOTCAKE.FR",
+  site: "www.dotcakre.fr",
   socialHandle: "@dotcake_officiel",
   hashtag: "#DOTCAKE",
 };

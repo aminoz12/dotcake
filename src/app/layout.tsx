@@ -16,7 +16,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://www.dotcake.fr";
+const SITE_URL = "https://www.dotcakre.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

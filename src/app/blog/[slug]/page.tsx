@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/blog";
 
-const SITE_URL = "https://www.dotcake.fr";
+const SITE_URL = "https://www.dotcakre.fr";
 
 type Params = { slug: string };
 

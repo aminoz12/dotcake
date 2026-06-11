@@ -4,7 +4,7 @@ import { BRAND } from "@/lib/data";
 type Props = {
   className?: string;
   /** size of the wordmark text */
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   /** show the "by GMD GROUP" line with gold filets */
   withParent?: boolean;
   /** light text variant for dark backgrounds */
@@ -14,6 +14,7 @@ type Props = {
 };
 
 const SIZES = {
+  xs: "text-base sm:text-lg",
   sm: "text-lg sm:text-xl",
   md: "text-2xl",
   lg: "text-4xl sm:text-5xl",
@@ -23,13 +24,15 @@ const SIZES = {
 /** Hauteurs en pixels appliquées en style inline — immunisé contre tout
  *  cache CSS/Tailwind obsolète (sinon l'img retombe sur width=602). */
 const IMG_PX = {
+  xs: 24, // extra small for compact footer
   sm: 36, // footer / sous-pages — compact
   md: 48,
   lg: 58, // navbar — bien visible
-  xl: 96,
+  xl: 120, // extra large for prominent navbar
 };
 
 const ORB = {
+  xs: "h-[0.68em] w-[0.68em]",
   sm: "h-[0.7em] w-[0.7em]",
   md: "h-[0.72em] w-[0.72em]",
   lg: "h-[0.74em] w-[0.74em]",

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Blog — Tendances dessert viral & conseils revendeurs",
   description:
     "Le blog DOT CAKE : tendances du dessert viral TikTok, snacking premium, conseils pour revendeurs et stratégies retail. Articles experts pour les professionnels.",
-  alternates: { canonical: "https://www.dotcake.fr/blog" },
+  alternates: { canonical: "https://www.dotcakre.fr/blog" },
 };
 
 const featured = ARTICLES[0];

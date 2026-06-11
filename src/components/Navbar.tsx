@@ -17,9 +17,8 @@ function NavLink({ href, className, onClick, children }: { href: string; classNa
 const LINKS = [
   { href: "#hero", label: "Accueil" },
   { href: "#saveurs", label: "Nos Saveurs" },
-  { href: "#pros", label: "Pros" },
   { href: "/blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -63,7 +62,7 @@ export function Navbar() {
           }`}
         >
           <a href="#hero" className="flex items-center" aria-label="DOT CAKE — accueil">
-            <Logo size="lg" img />
+            <Logo size="xl" img />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -108,9 +107,9 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="container-luxe overflow-hidden lg:hidden"
+            className="absolute left-0 right-0 top-full z-50 px-4 lg:hidden"
           >
-            <div className="mt-2 flex flex-col gap-1 rounded-3xl border border-rose/10 bg-white p-4 shadow-card">
+            <div className="mx-auto mt-2 max-w-7xl flex flex-col gap-1 rounded-3xl border border-rose/10 bg-white p-4 shadow-card">
               {LINKS.map((link) => (
                 <NavLink
                   key={link.href}
