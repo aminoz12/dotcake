@@ -20,11 +20,13 @@ const SIZES = {
   xl: "text-5xl sm:text-6xl lg:text-7xl",
 };
 
-const IMG_SIZES = {
-  sm: "h-8", // footer / sous-pages — compact
-  md: "h-12",
-  lg: "h-14 sm:h-16", // navbar — bien visible
-  xl: "h-24",
+/** Hauteurs en pixels appliquées en style inline — immunisé contre tout
+ *  cache CSS/Tailwind obsolète (sinon l'img retombe sur width=602). */
+const IMG_PX = {
+  sm: 36, // footer / sous-pages — compact
+  md: 48,
+  lg: 58, // navbar — bien visible
+  xl: 96,
 };
 
 const ORB = {
@@ -53,7 +55,8 @@ export function Logo({
         width={602}
         height={415}
         priority
-        className={`${IMG_SIZES[size]} w-auto ${className}`}
+        className={className}
+        style={{ height: IMG_PX[size], width: "auto" }}
       />
     );
   }

@@ -1,9 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { MagneticButton } from "./ui/MagneticButton";
 import { Logo } from "./ui/Logo";
+
+/** Anchor (#) links stay native <a>; route links use client-side <Link>. */
+function NavLink({ href, className, onClick, children }: { href: string; className?: string; onClick?: () => void; children: ReactNode }) {
+  if (href.startsWith("#")) {
+    return <a href={href} className={className} onClick={onClick}>{children}</a>;
+  }
+  return <Link href={href} className={className} onClick={onClick}>{children}</Link>;
+}
 
 const LINKS = [
   { href: "#hero", label: "Accueil" },
@@ -60,13 +69,13 @@ export function Navbar() {
           <ul className="hidden items-center gap-8 lg:flex">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <NavLink
                   href={link.href}
                   className="group relative text-sm font-semibold text-ink/70 transition-colors hover:text-rose"
                 >
                   {link.label}
                   <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 bg-rose transition-all duration-300 group-hover:w-full" />
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -103,14 +112,14 @@ export function Navbar() {
           >
             <div className="mt-2 flex flex-col gap-1 rounded-3xl border border-rose/10 bg-white p-4 shadow-card">
               {LINKS.map((link) => (
-                <a
+                <NavLink
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="rounded-2xl px-4 py-3 text-sm font-semibold text-ink/80 transition-colors hover:bg-rose-mist hover:text-rose"
                 >
                   {link.label}
-                </a>
+                </NavLink>
               ))}
               <a
                 href="#contact"

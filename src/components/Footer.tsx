@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FLAVORS, BRAND } from "@/lib/data";
 import { Logo } from "./ui/Logo";
 
@@ -79,9 +80,9 @@ export function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {items.map((item) => (
                   <li key={item.label}>
-                    <a href={item.href} className="text-sm text-ink-soft transition-colors hover:text-ink">
+                    <Link href={item.href} className="text-sm text-ink-soft transition-colors hover:text-ink">
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -94,10 +95,10 @@ export function Footer() {
             © {new Date().getFullYear()} {BRAND.name} {BRAND.parent}. Tous droits réservés.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-ink-mute">
-            <a href="/mentions-legales" className="transition-colors hover:text-ink">Mentions légales</a>
-            <a href="/politique-de-confidentialite" className="transition-colors hover:text-ink">Politique de confidentialité</a>
-            <a href="/cgv" className="transition-colors hover:text-ink">CGV professionnelles</a>
-            <a href="/cookies" className="transition-colors hover:text-ink">Cookies</a>
+            <Link href="/mentions-legales" className="transition-colors hover:text-ink">Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" className="transition-colors hover:text-ink">Politique de confidentialité</Link>
+            <Link href="/cgv" className="transition-colors hover:text-ink">CGV professionnelles</Link>
+            <Link href="/cookies" className="transition-colors hover:text-ink">Cookies</Link>
           </div>
         </div>
       </div>

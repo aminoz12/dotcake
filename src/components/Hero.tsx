@@ -29,19 +29,23 @@ export function Hero() {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
-        const speed = Number(el.dataset.parallax) || 0.2;
-        gsap.to(el, {
-          yPercent: speed * 100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
+      // Parallax only on desktop pointer devices — avoids scroll-scrub jank on mobile.
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px)", () => {
+        gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
+          const speed = Number(el.dataset.parallax) || 0.2;
+          gsap.to(el, {
+            yPercent: speed * 100,
+            ease: "none",
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
         });
       });
     }, root);
