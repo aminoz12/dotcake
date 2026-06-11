@@ -102,33 +102,63 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="absolute left-0 right-0 top-full z-50 px-4 lg:hidden"
-          >
-            <div className="mx-auto mt-2 max-w-7xl flex flex-col gap-1 rounded-3xl border border-rose/10 bg-white p-4 shadow-card">
-              {LINKS.map((link) => (
-                <NavLink
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-sm font-semibold text-ink/80 transition-colors hover:bg-rose-mist hover:text-rose"
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-2xl bg-rose-gradient px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                Demander un devis
-              </a>
-            </div>
-          </motion.div>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+            />
+            {/* Mobile menu sliding from right */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 z-50 h-full w-[80%] max-w-sm bg-white shadow-2xl lg:hidden"
+            >
+              <div className="flex h-full flex-col p-6">
+                <div className="flex items-center justify-between mb-8">
+                  <Logo size="lg" img />
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-rose/15 bg-white text-ink shadow-card"
+                    aria-label="Fermer le menu"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <nav className="flex flex-col gap-2">
+                  {LINKS.map((link) => (
+                    <NavLink
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="rounded-2xl px-4 py-3 text-base font-semibold text-ink/80 transition-colors hover:bg-rose-mist hover:text-rose"
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </nav>
+
+                <div className="mt-auto">
+                  <NavLink
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-2xl bg-rose-gradient px-4 py-4 text-center text-base font-semibold text-white"
+                  >
+                    Demander un devis
+                  </NavLink>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

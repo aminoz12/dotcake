@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PageHeader } from "@/components/PageHeader";
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/blog";
@@ -96,7 +96,7 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <PageHeader />
+      <Navbar />
       <main className="relative">
         {/* header band */}
         <section

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
+import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ARTICLES } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
@@ -18,7 +18,7 @@ const rest = ARTICLES.slice(1);
 export default function BlogPage() {
   return (
     <>
-      <PageHeader />
+      <Navbar />
       <main className="relative">
         {/* hero */}
         <section className="relative overflow-hidden pb-10 pt-36">

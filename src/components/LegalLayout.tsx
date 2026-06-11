@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { PageHeader } from "./PageHeader";
+import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 export function LegalLayout({ eyebrow = "Informations", title, updated, children }: Props) {
   return (
     <>
-      <PageHeader />
+      <Navbar />
       <main className="relative">
         {/* header band */}
         <section className="relative overflow-hidden pb-12 pt-36">
