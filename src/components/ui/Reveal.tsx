@@ -33,16 +33,15 @@ export function Reveal({
   direction = "up",
   as = "div",
 }: RevealProps) {
+  // No blur filter: it forces expensive repaints on mobile GPUs.
   const variants: Variants = {
-    hidden: { opacity: 0, ...offset[direction], scale: 0.985, filter: "blur(6px)" },
+    hidden: { opacity: 0, ...offset[direction] },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      scale: 1,
-      filter: "blur(0px)",
       transition: {
-        duration: 0.8,
+        duration: 0.7,
         delay,
         ease: [0.22, 1, 0.36, 1],
       },

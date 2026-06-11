@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode, type MouseEvent } from "react";
 
@@ -14,13 +15,16 @@ type Props = {
   ariaLabel?: string;
 };
 
+// Internal routes go through next/link (instant client-side navigation).
+const MotionLink = motion.create(Link);
+
 /**
  * Premium magnetic button: the element subtly tracks the cursor,
  * with a shine sweep on hover. Used for all primary CTAs.
  */
 export function MagneticButton({
   children,
-  href = "#contact",
+  href = "/#contact",
   variant = "primary",
   className = "",
   onClick,
@@ -55,21 +59,37 @@ export function MagneticButton({
       ? "bg-rose-gradient text-white shadow-glow hover:shadow-glow-lg"
       : "border border-rose/30 bg-white text-rose hover:bg-rose-mist hover:text-rose-deep shadow-card";
 
-  return (
-    <motion.a
-      ref={ref}
-      href={href}
-      aria-label={ariaLabel}
-      onClick={onClick}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      style={{ x: tx, y: ty }}
-      whileTap={{ scale: 0.96 }}
-      className={`${base} ${styles} ${className}`}
-    >
+  const shared = {
+    ref,
+    "aria-label": ariaLabel,
+    onClick,
+    onMouseMove: handleMove,
+    onMouseLeave: reset,
+    style: { x: tx, y: ty },
+    whileTap: { scale: 0.96 },
+    className: `${base} ${styles} ${className}`,
+  };
+
+  const inner = (
+    <>
       <span className="relative z-10 flex items-center gap-2">{children}</span>
       {/* shine sweep */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+    </>
+  );
+
+  // Internal navigation (routes or /#anchors) → Link; external/mailto → <a>.
+  if (href.startsWith("/")) {
+    return (
+      <MotionLink href={href} {...shared}>
+        {inner}
+      </MotionLink>
+    );
+  }
+
+  return (
+    <motion.a href={href} {...shared}>
+      {inner}
     </motion.a>
   );
 }

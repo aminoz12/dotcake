@@ -84,11 +84,26 @@ const config: Config = {
         shimmer: "shimmer 3.5s linear infinite",
         "bounce-soft": "bounceSoft 2.6s ease-in-out infinite",
         marquee: "marquee 28s linear infinite",
+        "fade-up": "fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both",
+        "fade-in": "fadeIn 1s ease-out both",
+        "nav-in": "navIn 0.7s cubic-bezier(0.22,1,0.36,1) both",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(24px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        navIn: {
+          from: { opacity: "0", transform: "translateY(-16px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
